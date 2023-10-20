@@ -4,7 +4,8 @@
 --Playlists (PLAYLIST_ID, Playlist_Name, Likes, #User_ID)
 --Albums (ALBUM_ID, Album_Name, Number_Of_Songs, #Artist_ID)
 --Tracks (TRACK_ID, Track_Genre, Runtime, #Album_ID, #Artist_ID)
- 
+
+--Create the various tables for the database
 CREATE TABLE USERS(
 	User_ID VARCHAR(50) PRIMARY KEY,
 	FirstName VARCHAR(50) NOT NULL,
@@ -61,7 +62,7 @@ CREATE TABLE TRACKS(
 );
 
 
---Populate
+--Populate the tables
 INSERT INTO USERS (User_ID, FirstName, LastName, Registration_Date)
 VALUES
 	('AA01', 'David', 'Adeyemi', '2023-01-04'),
@@ -141,7 +142,7 @@ VALUES
 	(5678, 'Funk', 145, 'AL056', 'AS04'),
 	(3, 'Afro', 126, 'AL676', 'AS07');
 	
---Retrive data from database
+--Retrive data from database to test the relationship
 SELECT * FROM TRACKS
 
 SELECT * FROM ARTISTS
@@ -151,6 +152,7 @@ WHERE Genre = 'Classics'
 SELECT * FROM ARTISTS
 ORDER BY Age DESC;
 
+--Retriving data from two different tables
 SELECT Playlist_Name, USERS.User_ID, Likes
 FROM USERS
 INNER JOIN PLAYLISTS ON USERS.User_ID = PLAYLISTS.User_ID;
